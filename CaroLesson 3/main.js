@@ -46,8 +46,7 @@ ex3()
 function ex4() {
     let a = +prompt('введите a от 0 до 15')
     if (a >= 0 & a < 15) {
+        switch
     }
-
-}
 
 ex4()
