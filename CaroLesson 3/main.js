@@ -21,6 +21,8 @@ function ex1() {
 
 ex1()
 
+// 2)
+
 /*const arr = []
 let n = 0
 while (n <= 100) {
