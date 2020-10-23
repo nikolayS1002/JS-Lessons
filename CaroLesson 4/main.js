@@ -68,4 +68,4 @@ countBasketPrice(BasketPrice, Paper.price)
 console.log('Стоимость товаров в корзине равна: ' + BasketPrice)
 
 // Знаю, знаю. Нужно реализовать корзину 
-// как родительский класс для Product)
+// как родительский класс для Product)!
