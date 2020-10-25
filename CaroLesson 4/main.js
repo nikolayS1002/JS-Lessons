@@ -14,9 +14,8 @@ function parse(number) {
     let x
 
     // if ((number >= 0) && (number < 1000)) {
-        console.log(number % 10)
-        obj.digits = 0
-        obj.decades = 0
+        obj.units = 0
+        obj.dozens = 0
         obj.hundreds = 0
         const arr = []
 
@@ -26,9 +25,11 @@ function parse(number) {
             number = Math.floor(number / 10)
         }
 
-        obj.digits = arr [0]
-        obj.decades = arr [1]
-        obj.hundreds = arr [2] 
+        // obj.units = arr [0]
+        // obj.dozens = arr [1]
+        // obj.hundreds = arr [2] 
+
+        [obj.units, obj.dozens, obj.hundreds] = arr
 
         console.log(obj)
 
@@ -37,7 +38,7 @@ function parse(number) {
     // }
 }
 
-// parse(prompt('введите число'))
+parse(prompt('введите число'))
 
 // 2) Продолжить работу с интернет-магазином:
 
@@ -65,7 +66,7 @@ countBasketPrice(BasketPrice, Scissors.price)
 countBasketPrice(BasketPrice, Pen.price)
 countBasketPrice(BasketPrice, Paper.price)
 
-console.log('Стоимость товаров в корзине равна: ' + BasketPrice)
+// console.log('Стоимость товаров в корзине равна: ' + BasketPrice)
 
 // Знаю, знаю. Нужно реализовать корзину 
 // как родительский класс для Product)!
