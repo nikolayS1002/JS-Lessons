@@ -21,7 +21,7 @@ const Catalog = [
     new Product('Galaxy S10', 44990)
 ]
 
-let totalCost = Catalog.reduce(function (sum, Product) {
+let totalCost = Catalog.reduce(function(sum, Product) {
     return sum + Product.price
 }, 0)
 
@@ -31,29 +31,28 @@ cart.push(Catalog[0], Catalog[2], Catalog[5])
 let str = document.createElement('div')
 let block = document.createElement('div')
 const cartBlock = document.querySelector('.main')
-    str = document.createElement('div')
-    cartBlock.appendChild(str)
-    str.classList.add('str')
+str = document.createElement('div')
+cartBlock.appendChild(str)
+str.classList.add('str')
 
-    const firstStrBlock = document.querySelector('.str')        
-    for (n = 0; n < 3; n++) {
-        block = document.createElement('div')
-        firstStrBlock.appendChild(block)
-        block.classList.add('block', 'block_title')
-        block.innerText = ('id')
-        switch (n) {
-            case 0:
-                block.innerText = 'Cart id'
-                break
-            case 1:
-                block.innerText = 'Product name'
-                break
-            case 2:
-                block.innerText = 'Price'
-                break
-    
-        }
+const firstStrBlock = document.querySelector('.str')
+for (n = 0; n < 3; n++) {
+    block = document.createElement('div')
+    firstStrBlock.appendChild(block)
+    block.classList.add('block', 'block_title')
+    switch (n) {
+        case 0:
+            block.innerText = 'Cart id'
+            break
+        case 1:
+            block.innerText = 'Product name'
+            break
+        case 2:
+            block.innerText = 'Price'
+            break
+
     }
+}
 
 for (i = 0; i < cart.length; i++) {
     str = document.createElement('div')
@@ -76,19 +75,19 @@ for (i = 0; i < cart.length; i++) {
             case 2:
                 block.innerText = (cart[i].price)
                 break
-    
+
         }
     }
 }
 
-let cartCost = cart.reduce(function (sum, product) {
+let cartCost = cart.reduce(function(sum, product) {
     return sum + product.price
 }, 0)
 
 str = document.createElement('div')
-    cartBlock.appendChild(str)
-    str.classList.add('str')
-    str.id = 'id_last'
+cartBlock.appendChild(str)
+str.classList.add('str')
+str.id = 'id_last'
 
 
 for (k = 0; k < 2; k++) {
@@ -103,43 +102,6 @@ for (k = 0; k < 2; k++) {
         case 1:
             block.innerText = cartCost
             break
-        
+
     }
 }
-
-
-
-
-
-// function ex2() {
-//     const board = document.querySelector('.board')
-//     let block = document.createElement('div')
-
-//     const nameArr = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-//     let chessColor = true
-//     for (i = 0; i < 8; i++) {
-//         for (j = 0; j < 8; j++) {
-//             if (chessColor) {
-//                 block.classList.add('block', 'block_black')
-//             }
-//             else {
-//                 block.classList.add('block', 'block_white')
-//             }
-//             block = document.createElement('div');
-//             board.appendChild(block);
-//             if (j == 0) {
-//                 block.innerText = i + 1
-//                 chessColor = !chessColor
-//             }
-
-//             if (i == 0) {
-//                 block.innerText = nameArr [j]
-//             }
-
-//             chessColor = !chessColor
-//         }
-//     }
-// }
-
-// ex1()
-
