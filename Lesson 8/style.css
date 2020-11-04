@@ -19,14 +19,14 @@ body {
 
 .list {
     display: block;
-    width: 300px;
+    width: 450px;
     border: 1px solid #bbb;
     background: #9c9;
 }
 
 .cart {
     display: block;
-    width: 250px;
+    width: 350px;
     border: 1px solid #bbb;
     background: #cc9;
 }
@@ -54,6 +54,7 @@ body {
 
 .block {
     display: block;
+    margin: 0 10px;
     height: 30px;
     padding: 3px 3px;
     line-height: 30px;
@@ -62,6 +63,10 @@ body {
 
 .block_title {
     color: darkgoldenrod;
+}
+
+.block_total {
+    color: #288d47;
 }
 
 .btn {
