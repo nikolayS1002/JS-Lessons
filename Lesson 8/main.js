@@ -37,9 +37,13 @@ class Cart {
         return Prod
     }
 
-    addInCart2(newItem) {
-        this.items.push(newItem)
+    cartSum() {
+        let result = MyCart.cartItems.reduce(function(sum, current) {
+            return sum + (current.count * current.price);
+        }, 0);
+        return result
     }
+
 
     render() {
         const cartBlock = document.getElementById('id_cart')
@@ -49,7 +53,7 @@ class Cart {
         str.classList.add('str')
 
         const firstStrBlock = cartBlock.querySelector('.str')
-        for (let n = 0; n < 3; n++) {
+        for (let n = 0; n < 4; n++) {
             block = document.createElement('div')
             firstStrBlock.appendChild(block)
             block.classList.add('block', 'block_title')
@@ -61,6 +65,9 @@ class Cart {
                     block.innerText = 'Название'
                     break
                 case 2:
+                    block.innerText = 'Кол-во'
+                    break
+                case 3:
                     block.innerText = 'Цена'
                     break
 
@@ -72,8 +79,8 @@ class Cart {
             cartBlock.appendChild(str)
             str.classList.add('str')
             str.id = 'cart_id_' + i
-            for (let j = 0; j < 3; j++) {
-                const strBlock = document.getElementById('cart_id_' + i)
+            for (let j = 0; j < 4; j++) {
+                let strBlock = document.getElementById('cart_id_' + i)
                 block = document.createElement('div')
                 strBlock.appendChild(block)
                 block.classList.add('block')
@@ -85,9 +92,32 @@ class Cart {
                         block.innerText = this.cartItems[i].name
                         break
                     case 2:
+                        block.innerText = this.cartItems[i].count
+                        break
+                    case 3:
                         block.innerText = this.cartItems[i].price
                         break
                 }
+            }
+        }
+        console.log()
+
+        str = document.createElement('div')
+        cartBlock.appendChild(str)
+        str.classList.add('str')
+        str.id = 'cart_id_last'
+        const lastStrBlock = document.getElementById('cart_id_last')
+        for (let n = 0; n < 2; n++) {
+            block = document.createElement('div')
+            lastStrBlock.appendChild(block)
+            block.classList.add('block', 'block_total')
+            switch (n) {
+                case 0:
+                    block.innerText = 'Общая сумма:'
+                    break
+                case 1:
+                    block.innerText = this.cartSum()
+                    break
             }
         }
     }
@@ -112,16 +142,18 @@ class List extends Cart {
 
         btn.addEventListener('click', () => {
             let prod = this.items[id]
+            let repeat = true
 
 
             MyCart.cartItems.forEach(function(item) {
                 if (item.name == prod.name) {
-                    console.log('1')
-
-                    // MyCart.cartItems.pop(prod)
-                } else {}
+                    repeat = false
+                    item.count++
+                }
             })
-            MyCart.cartItems.push(prod)
+            if (repeat) {
+                MyCart.cartItems.push(prod)
+            }
             MyCart.render()
         })
     }
@@ -133,7 +165,7 @@ class List extends Cart {
         str.classList.add('str')
 
         const firstListBlock = listBlock.querySelector('.str')
-        for (let n = 0; n < 3; n++) {
+        for (let n = 0; n < 4; n++) {
             block = document.createElement('div')
             firstListBlock.appendChild(block)
             block.classList.add('block', 'block_title')
@@ -147,7 +179,9 @@ class List extends Cart {
                 case 2:
                     block.innerText = 'Цена'
                     break
-
+                case 3:
+                    block.innerText = ' '
+                    break
             }
         }
 
@@ -188,113 +222,7 @@ let totalCost = Catalog.reduce(function(sum, Product) {
 }, 0)
 
 const MyList = new List
-MyList.items = Catalog
-
 const MyCart = new Cart
-console.log(MyCart.cartItems)
 
-// let n = 2
-// MyCart[n] = MyCart.addInCart(Catalog[n].name, Catalog[n].price)
-
-
-
-// console.log(MyCart.Product)
-// MyCart.render()
+MyList.items = Catalog
 MyList.render(MyList.items)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// let str = document.createElement('div')
-// let block = document.createElement('div')
-// const cartBlock = document.querySelector('.main')
-//     str = document.createElement('div')
-//     cartBlock.appendChild(str)
-//     str.classList.add('str')
-
-//     const firstStrBlock = document.querySelector('.str')        
-//     for (n = 0; n < 3; n++) {
-//         block = document.createElement('div')
-//         firstStrBlock.appendChild(block)
-//         block.classList.add('block', 'block_title')
-//         switch (n) {
-//             case 0:
-//                 block.innerText = 'Cart id'
-//                 break
-//             case 1:
-//                 block.innerText = 'Product name'
-//                 break
-//             case 2:
-//                 block.innerText = 'Price'
-//                 break
-
-//         }
-//     }
-
-// for (i = 0; i < cart.length; i++) {
-//     str = document.createElement('div')
-//     cartBlock.appendChild(str)
-//     str.classList.add('str')
-//     str.id = 'id_' + i
-
-//     for (j = 0; j < 3; j++) {
-//         const strBlock = cartBlock.getElementById('id_' + i)
-//         block = document.createElement('div')
-//         strBlock.appendChild(block)
-//         block.classList.add('block')
-//         switch (j) {
-//             case 0:
-//                 block.innerText = i + 1
-//                 break
-//             case 1:
-//                 block.innerText = (cart[i].name)
-//                 break
-//             case 2:
-//                 block.innerText = (cart[i].price)
-//                 break
-
-//         }
-//     }
-// }
-
-// let cartCost = cart.reduce(function (sum, product) {
-//     return sum + product.price
-// }, 0)
-
-// str = document.createElement('div')
-//     cartBlock.appendChild(str)
-//     str.classList.add('str')
-//     str.id = 'id_last'
-
-
-// for (k = 0; k < 2; k++) {
-//     const lastStrBlock = document.getElementById('id_last')
-//     block = document.createElement('div')
-//     lastStrBlock.appendChild(block)
-//     block.classList.add('block', 'block_title')
-//     switch (k) {
-//         case 0:
-//             block.innerText = 'Total price:'
-//             break
-//         case 1:
-//             block.innerText = cartCost
-//             break
-
-//     }
-// }
